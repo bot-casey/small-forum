@@ -1,0 +1,26 @@
+services:
+  posts-db:
+    image: 'postgres'
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: somePassword
+      POSTGRES_DB: posts
+    volumes:
+      - ./cstadick:/var/lib/postgresql/data
+  posts:
+    depends_on:
+      - posts-db
+    build: 
+      context: ./backend/service-posts
+      target: dev
+    hostname: posts
+    ports:
+      - '5000:5000'
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=casey.stadick@gmail.coop
+  #     - PGADMIN_DEFAULT_PASSWORD=somePassword
+  #   ports:
+  #     - '80:80'
