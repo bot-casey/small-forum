@@ -17,6 +17,13 @@ services:
     hostname: posts
     ports:
       - '5000:5000'
+  frontend:
+    build: 
+      context: ./frontend
+      target: dev
+    hostname: frontend
+    ports:
+      - '8080:8080'
   # pgadmin:
   #   image: dpage/pgadmin4
   #   environment:
