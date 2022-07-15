@@ -27,7 +27,7 @@ services:
   # pgadmin:
   #   image: dpage/pgadmin4
   #   environment:
-  #     - PGADMIN_DEFAULT_EMAIL=casey.stadick@gmail.coop
+  #     - PGADMIN_DEFAULT_EMAIL=
   #     - PGADMIN_DEFAULT_PASSWORD=somePassword
   #   ports:
   #     - '80:80'
