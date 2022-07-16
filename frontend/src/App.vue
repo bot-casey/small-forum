@@ -8,20 +8,17 @@
         app
     >
         <v-app-bar-nav-icon @click="drawer.status = !drawer.status" />
-        <v-toolbar-title>Server Manager</v-toolbar-title>
+        <v-toolbar-title>Noddit</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
-        <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-            <v-icon>mdi-email</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
+        <v-btn 
+        icon
+        v-for="item in this.$data.toolbar.items"
+        :key="item.id"
+        :onClick="item.onClick"
+        >
+            <v-icon>{{ item.icon }}</v-icon>
         </v-btn>
         
     </v-app-bar>
@@ -55,26 +52,20 @@
     </v-navigation-drawer>
 
     <v-main>
-      <AwsStatusGrid/>
-      <v-container grid-list-xs>
-        <v-row
-          style="height: 150px;"
-        >
-          <v-spacer/>
-          <PostsCard class="text-center d-flex flex-column align-center"/>
-          <v-spacer/>
-          <PostsCard class="text-center d-flex flex-column align-center"/>
-          <v-spacer/>
-          <PostsCard class="text-center d-flex flex-column align-center"/>
-          <v-spacer/>
-        </v-row>
-        <v-row
-          style="height: 150px;"
-        >
-          <PostsCard class="text-center d-flex flex-column align-center"/>
-        </v-row>
-      </v-container>
-      <DurationGraph/>
+      <v-container>
+        <PostsCard
+            v-for="item in this.$data.posts"
+            :key="item.id"
+            :subForum="item.subForum"
+            :postTitle="item.postTitle"
+            :textPreview="item.textPreview"
+            :upVotes="item.upVotes"
+            :downVotes="item.downVotes"
+          >
+                      <v-spacer d-flex flex-column height="20px"></v-spacer>
+          </PostsCard>
+
+        </v-container>
     </v-main>
 
   </v-app>
@@ -83,16 +74,12 @@
 
 <script>
 
-import AwsStatusGrid from './components/AwsStatusGrid.vue'
 import PostsCard from './components/PostsCard.vue'
-import DurationGraph from './components/DurationGraph.vue'
 
 export default {
   name: 'App',
   components: {
-    AwsStatusGrid,
-    PostsCard,
-    DurationGraph,
+    PostsCard
   },
   data: () => ({
     drawer: {
@@ -107,13 +94,82 @@ export default {
       ]
         
     },
+    toolbar: {
+      items: [
+        {
+          icon: 'mdi-magnify',
+          onClick: 'console.log(stuff)'
+        },
+        {
+          icon: 'mdi-email',
+          onClick: 'console.log(stuff)'
+        },
+        {
+          icon: 'mdi-dots-vertical',
+          onClick: 'console.log(stuff)'
+        }
+      ]
+    },
     group: null,
     posts: [
       {
-        title: 'some title',
-        voteCounter: 2,
-        author: 'some guy'
-      }
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
+            {
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
+            {
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
+            {
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
+            {
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
+            {
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
+            {
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
+                  {
+        subForum: '123123',
+        postTitle: 'some title',
+        textPreview: 'asfasfasfasd \
+        asdfasfdssadasdfasdfasfasdfsafsdasdfasdfasdfsad \
+        adfasfasfasfasdfasfasdfasdfasfasdfsdfasd',
+        upVotes: '100',
+        downVotes: '50',
+      },
     ]
   }),
   watch: {
@@ -129,6 +185,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
 }
 </style>
