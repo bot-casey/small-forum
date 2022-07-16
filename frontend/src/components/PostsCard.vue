@@ -19,26 +19,25 @@
         tile
         size="80"
         color="grey"
-      ></v-list-item-avatar>
+      >
+        <img :src="avatarUrl"/>
+      </v-list-item-avatar>
     </v-list-item>
 
+    <v-divider/>
+
     <v-card-actions>
-      <v-btn
-        text
-      >
+      <v-btn text>
         <v-icon>mdi-thumb-up</v-icon>
         {{upVotes}}
       </v-btn>
       
-      <v-btn
-        text
-      >
+      <v-btn text>
         <v-icon>mdi-thumb-down</v-icon>
-        {{downVotes}}
+        <div d-flex> {{downVotes}} </div>
       </v-btn>
 
-      <v-btn 
-        text>
+      <v-btn text>
         <v-icon>mdi-message-text</v-icon>
       </v-btn>
 
@@ -56,6 +55,7 @@ export default {
     'textPreview',
     'upVotes',
     'downVotes',
+    'avatarUrl',
   ],
   data() { 
     return {}

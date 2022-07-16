@@ -53,19 +53,29 @@
 
     <v-main>
       <v-container>
-        <PostsCard
-            v-for="item in this.$data.posts"
-            :key="item.id"
-            :subForum="item.subForum"
-            :postTitle="item.postTitle"
-            :textPreview="item.textPreview"
-            :upVotes="item.upVotes"
-            :downVotes="item.downVotes"
+        <v-row no-gutters>
+          <v-col
+            cols="12"
+            sm="6"
+            md="9"
           >
-                      <v-spacer d-flex flex-column height="20px"></v-spacer>
-          </PostsCard>
-
-        </v-container>
+            <PostsCard
+                v-for="item in this.$data.posts"
+                :key="item.id"
+                :subForum="item.subForum"
+                :postTitle="item.postTitle"
+                :textPreview="item.textPreview"
+                :upVotes="item.upVotes"
+                :downVotes="item.downVotes"
+                :avatarUrl="item.avatarUrl"
+                class="mb-6 mr-20 mx-auto"
+            />
+          </v-col>
+          <v-col>
+          </v-col>
+        </v-row>
+          
+      </v-container>
     </v-main>
 
   </v-app>
@@ -116,52 +126,55 @@ export default {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd',
-        upVotes: '100',
-        downVotes: '50',
+        upVotes: '1400',
+        downVotes: '5123412340',
+        avatarUrl: 'https://i.pravatar.cc/80'
       },
-            {
+      {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd',
-        upVotes: '100',
-        downVotes: '50',
+        upVotes: '14000',
+        downVotes: '55',
+        avatarUrl: 'https://i.pravatar.cc/80',
       },
-            {
+      {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd',
-        upVotes: '100',
-        downVotes: '50',
+        upVotes: '140000',
+        downVotes: '5',
+        avatarUrl: 'https://i.pravatar.cc/80',
       },
-            {
+      {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd',
-        upVotes: '100',
-        downVotes: '50',
+        upVotes: '5',
+        downVotes: '4',
       },
-            {
+      {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd',
-        upVotes: '100',
-        downVotes: '50',
+        upVotes: '3',
+        downVotes: '3',
       },
-            {
+      {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd',
-        upVotes: '100',
-        downVotes: '50',
+        upVotes: '2',
+        downVotes: '2',
       },
-            {
+      {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd',
-        upVotes: '100',
-        downVotes: '50',
+        upVotes: '1',
+        downVotes: '1',
       },
-                  {
+      {
         subForum: '123123',
         postTitle: 'some title',
         textPreview: 'asfasfasfasd \
@@ -177,6 +190,7 @@ export default {
       this.drawer.status = false
     },
   },
+  
 }
 </script>
 
