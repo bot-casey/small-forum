@@ -190,7 +190,6 @@ export default {
       this.drawer.status = false
     },
   },
-  
 }
 </script>
 
